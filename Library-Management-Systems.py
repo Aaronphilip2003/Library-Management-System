@@ -72,6 +72,18 @@ class Library:
         def Display():
             self.txtFrameDetail.insert(END,"  "+MType.get()+"\t\t  "+Ref.get()+"\t\t"+Title.get()+"\t      "+Firstname.get()+"\t\t"+Surname.get()+"\t\t"+Address1.get()+"\t\t"+Address2.get()+"\t\t  "+PostCode.get()+"\t\t  "+BookTitle.get()+"\t\t  "+DateBorrowed.get()+"\t\t  "+DaysOnLoan.get()+"\n")
 
+        def Receipt():
+            self.txtDisplayR.insert(END, "Member Type: \t\t"+MType.get()+"\n")
+            self.txtDisplayR.insert(END, "Reference Number: \t\t" + Ref.get() + "\n")
+            self.txtDisplayR.insert(END, "Title: \t\t" + Title.get() + "\n")
+            self.txtDisplayR.insert(END, "First Name: \t\t" + Firstname.get() + "\n")
+            self.txtDisplayR.insert(END, "Surname: \t\t" + Surname.get() + "\n")
+            self.txtDisplayR.insert(END, "Address 1: \t\t" + Address1.get() + "\n")
+            self.txtDisplayR.insert(END, "Address 2: \t\t" + Address2.get() + "\n")
+            self.txtDisplayR.insert(END, "Post Code: \t\t" + PostCode.get() + "\n")
+            self.txtDisplayR.insert(END, "Book Title: \t\t" + BookTitle.get() + "\n")
+            self.txtDisplayR.insert(END, "Author: \t\t" + Author.get() + "\n")
+            self.txtDisplayR.insert(END, "Date Borrowed: \t\t" + DateBorrowed.get() + "\n")
 
 
         # ==================================================WIDGETS==================================================
@@ -173,7 +185,7 @@ class Library:
         self.lbladdress2 = Entry(DataFrameLeft, font=('arial', 12, 'bold'), width=25, textvariable=Address2)
         self.lbladdress2.grid(row=7, column=1)
 
-        self.lblLateReturnFine = Label(DataFrameLeft, font=('arial', 12, 'bold'), text="Days On Loan:", padx=2, pady=2)
+        self.lblLateReturnFine = Label(DataFrameLeft, font=('arial', 12, 'bold'), text="Late Return Fine:", padx=2, pady=2)
         self.lblLateReturnFine.grid(row=7, column=2, sticky=W)
         self.lblLateReturnFine = Entry(DataFrameLeft, font=('arial', 12, 'bold'), width=25, textvariable=LateReturnFine)
         self.lblLateReturnFine.grid(row=7, column=3)
@@ -210,8 +222,24 @@ class Library:
         scrollbar.grid(row=0,column=1, sticky= "ns")
 
         ListOfBooks = ['Cinderella', 'Jane Eyre', 'The Stranger', 'Oliver Twist', 'Rebecca', 'Pride and Prejudice', 'To Kill a Mockingbird', 'The Great Gatsby', 'In Cold Blood', 'The Call of the Wild', 'Persuasion']
+
+        def SelectedBook(event):
+            values=str(bookList.get(bookList.curselection()))
+            print(values)
+            w=values
+
+            if w == 'Cinderella':
+                BookID.set("ISBN 7843543875")
+                BookTitle.set("Cinderella")
+                Author.set("Charles Perrault")
+                LateReturnFine.set("$2.99")
+                SellingPrice.set("$14.99")
+                DaysOnLoan.set(14)
+                Receipt()
+
+
         bookList = Listbox(DataFrameRight, font=('arial', 12, 'bold'))
-        bookList.bind("<<ListboxSelect>>")
+        bookList.bind("<<ListboxSelect>>",SelectedBook)
         bookList.grid(row=0,  column=0, padx=8)
         scrollbar.config(command=bookList.yview())
 
