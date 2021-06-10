@@ -229,12 +229,20 @@ class Library:
             w=values
 
             if w == 'Cinderella':
-                BookID.set("ISBN 7843543875")
+                BookID.set("ISBN 9780736430029")
                 BookTitle.set("Cinderella")
                 Author.set("Charles Perrault")
                 LateReturnFine.set("$2.99")
                 SellingPrice.set("$14.99")
                 DaysOnLoan.set(14)
+            elif w == 'Jane Eyre':
+                BookID.set("ISBN 9780435125509")
+                BookTitle.set("Jane Eyre")
+                Author.set("Charlotte Brontë")
+                LateReturnFine.set("$2.99")
+                SellingPrice.set("$14.99")
+                DaysOnLoan.set(14)
+
             Receipt()
 
 
