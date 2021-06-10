@@ -242,6 +242,13 @@ class Library:
                 LateReturnFine.set("$2.99")
                 SellingPrice.set("$14.99")
                 DaysOnLoan.set(14)
+            elif w == 'The Stranger':
+                BookID.set("ISBN 9780394533056")
+                BookTitle.set("The Stranger")
+                Author.set("Albert Camus")
+                LateReturnFine.set("$2.99")
+                SellingPrice.set("$14.99")
+                DaysOnLoan.set(14)
 
             Receipt()
 
