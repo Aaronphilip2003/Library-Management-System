@@ -10,7 +10,7 @@ class Library:
     def __init__(self, root):
         self.root = root
         self.root.title("Library Management Systems")
-        self.root.geometry("1490x850+0+0")
+        self.root.geometry("1540x850+0+0")
         self.root.configure(background="gray")
 
         MType= StringVar()
@@ -62,11 +62,15 @@ class Library:
             DateOverDue.set("")
             DaysOnLoan.set("")
             # self.txtFrameDetail.delete("1.0",END)
-            self.txtDisplayR.delete("1.0", END)
+            # self.txtDisplayR.delete("1.0", END)
 
         def Delete():
             Reset()
             self.txtDisplayR.delete("1.0",END)
+            self.txtFrameDetail.delete("1.0",END)
+
+        def Display():
+            self.txtFrameDetail.insert(END,"  "+MType.get()+"\t\t  "+Ref.get()+"\t\t"+Title.get()+"\t      "+Firstname.get()+"\t\t"+Surname.get()+"\t\t"+Address1.get()+"\t\t"+Address2.get()+"\t\t  "+PostCode.get()+"\t\t  "+BookTitle.get()+"\t\t  "+DateBorrowed.get()+"\t\t  "+DaysOnLoan.get()+"\n")
 
 
 
@@ -199,6 +203,7 @@ class Library:
         self.txtDisplayR=Text(DataFrameRight, font=('arial', 12, 'bold'), width=32, height=13, padx=8, pady=20)
         self.txtDisplayR.grid(row=0, column=2)
 
+
         # ==================================================List Box=================================================
 
         scrollbar = Scrollbar(DataFrameRight)
@@ -215,23 +220,26 @@ class Library:
 
         # ==================================================DETAILS==================================================
 
-        self.lblLabel = Label(FrameDetail, font=('arial', 12, 'bold'), pady=8, text="Member Type\tReference No,\tTitle\tFirst Name\tSurname\tAddress 1\t Address 2\t Post Code\tBook Title\tDate Borrowed\tDays on Loan")
+        self.lblLabel = Label(FrameDetail, font=('arial', 12, 'bold'), padx=2, pady=8, text="Member Type\tReference No\tTitle\t     First Name\t  Surname \tAddress 1\t Address 2\t Post Code\tBook Title\tDate Borrowed\tDays on Loan")
         self.lblLabel.grid(row=0,column=0)
 
-        self.txtDisplayR = Text(FrameDetail, font=('arial', 12, 'bold'), width=141, height=4, padx=2, pady=4)
-        self.txtDisplayR.grid(row=1, column=0)
+        self.txtFrameDetail = Text(FrameDetail, font=('arial', 12, 'bold'), width=165, height=4, padx=2, pady=4)
+        self.txtFrameDetail.grid(row=1, column=0)
+
+        scrollbar = Scrollbar(FrameDetail)
+        scrollbar.grid(row=0, column=1, sticky="ns")
 
 
 
         # ==================================================BUTTONS==================================================
 
-        self.btnDisplayData = Button(ButtonFrame, text="DISPLAY DATA", font=('arial', 12, 'bold'), width=30, bd=4)
+        self.btnDisplayData = Button(ButtonFrame, text="DISPLAY DATA", font=('arial', 12, 'bold'), width=30, bd=4,command=Display)
         self.btnDisplayData.grid(row=0, column=0)
 
-        self.btnDelete = Button(ButtonFrame, text="DELETE", font=('arial', 12, 'bold'), width=30, bd=4, command=Delete)
+        self.btnDelete = Button(ButtonFrame, text="RESET", font=('arial', 12, 'bold'), width=30, bd=4, command=Delete)
         self.btnDelete.grid(row=0, column=1)
 
-        self.btnReset = Button(ButtonFrame, text="RESET", font=('arial', 12, 'bold'), width=30, bd=4, command=Reset)
+        self.btnReset = Button(ButtonFrame, text="DELETE", font=('arial', 12, 'bold'), width=30, bd=4, command=Reset)
         self.btnReset.grid(row=0, column=2)
 
         self.btnExit = Button(ButtonFrame, text="EXIT", font=('arial', 12, 'bold'), width=30, bd=4, command=Exit)
