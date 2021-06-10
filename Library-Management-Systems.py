@@ -249,6 +249,20 @@ class Library:
                 LateReturnFine.set("$2.99")
                 SellingPrice.set("$14.99")
                 DaysOnLoan.set(14)
+            elif w == 'Oliver Twist':
+                BookID.set("ISBN 9780141192499")
+                BookTitle.set("Oliver Twist")
+                Author.set("Charles Dickens")
+                LateReturnFine.set("$2.99")
+                SellingPrice.set("$14.99")
+                DaysOnLoan.set(14)
+            elif w == 'Rebecca':
+                BookID.set("ISBN 9780349010267")
+                BookTitle.set("Rebecca")
+                Author.set("Daphne du Maurier")
+                LateReturnFine.set("$2.99")
+                SellingPrice.set("$14.99")
+                DaysOnLoan.set(14)
 
             Receipt()
 
