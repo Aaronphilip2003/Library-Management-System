@@ -235,7 +235,7 @@ class Library:
                 LateReturnFine.set("$2.99")
                 SellingPrice.set("$14.99")
                 DaysOnLoan.set(14)
-                Receipt()
+            Receipt()
 
 
         bookList = Listbox(DataFrameRight, font=('arial', 12, 'bold'))
